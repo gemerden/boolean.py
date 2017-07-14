@@ -866,7 +866,10 @@ class Symbol(Expression):
         if comparator is not NotImplemented:
             return comparator
         if isinstance(other, Symbol):
-            return self.obj < other.obj
+            try:
+                return self.obj < other.obj
+            except Exception:
+                return NotImplemented
         return NotImplemented
 
     def __str__(self):
